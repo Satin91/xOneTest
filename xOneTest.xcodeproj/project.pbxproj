@@ -14,6 +14,11 @@
 		750ADFA42751479D005AB9E3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750ADFA32751479D005AB9E3 /* Layout.swift */; };
 		750ADFA6275148DD005AB9E3 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750ADFA5275148DD005AB9E3 /* Constraints.swift */; };
 		750ADFA827514A2F005AB9E3 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 750ADFA727514A2F005AB9E3 /* Ubuntu-R.ttf */; };
+		750ADFAA27515571005AB9E3 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 750ADFA927515570005AB9E3 /* Oswald-Light.ttf */; };
+		750ADFAC27515A0F005AB9E3 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750ADFAB27515A0F005AB9E3 /* PickerController.swift */; };
+		750ADFAE27516348005AB9E3 /* PresentPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750ADFAD27516347005AB9E3 /* PresentPhotoViewController.swift */; };
+		750ADFB2275175F7005AB9E3 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750ADFB1275175F7005AB9E3 /* StorageManager.swift */; };
+		7532EE372751D8B3009ABCA2 /* CollectionDelegate:DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7532EE362751D8B2009ABCA2 /* CollectionDelegate:DataSource.swift */; };
 		7544950527501B9300AF7AB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544950427501B9300AF7AB6 /* AppDelegate.swift */; };
 		7544950727501B9300AF7AB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544950627501B9300AF7AB6 /* SceneDelegate.swift */; };
 		7544950927501B9300AF7AB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544950827501B9300AF7AB6 /* ViewController.swift */; };
@@ -35,6 +40,11 @@
 		750ADFA32751479D005AB9E3 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		750ADFA5275148DD005AB9E3 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		750ADFA727514A2F005AB9E3 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
+		750ADFA927515570005AB9E3 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
+		750ADFAB27515A0F005AB9E3 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
+		750ADFAD27516347005AB9E3 /* PresentPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPhotoViewController.swift; sourceTree = "<group>"; };
+		750ADFB1275175F7005AB9E3 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		7532EE362751D8B2009ABCA2 /* CollectionDelegate:DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionDelegate:DataSource.swift"; sourceTree = "<group>"; };
 		7544950127501B9300AF7AB6 /* xOneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xOneTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7544950427501B9300AF7AB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7544950627501B9300AF7AB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,10 +74,10 @@
 		750ADFA12750E9F2005AB9E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				750ADFA32751479D005AB9E3 /* Layout.swift */,
 				750ADF992750E187005AB9E3 /* ContainerView.swift */,
 				750ADF9D2750E9CA005AB9E3 /* PhotoCollectionViewCell.swift */,
 				750ADF9F2750E9E6005AB9E3 /* PhotoCollectionView.swift */,
+				7544950A27501B9300AF7AB6 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -76,9 +86,50 @@
 			isa = PBXGroup;
 			children = (
 				7544950827501B9300AF7AB6 /* ViewController.swift */,
+				7532EE362751D8B2009ABCA2 /* CollectionDelegate:DataSource.swift */,
+				750ADFAD27516347005AB9E3 /* PresentPhotoViewController.swift */,
+				750ADFAB27515A0F005AB9E3 /* PickerController.swift */,
 				750ADFA5275148DD005AB9E3 /* Constraints.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		7532EE382751DC3C009ABCA2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				7544950427501B9300AF7AB6 /* AppDelegate.swift */,
+				7544950627501B9300AF7AB6 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		7532EE392751DC86009ABCA2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7544950D27501BB500AF7AB6 /* Assets.xcassets */,
+				754495232750281700AF7AB6 /* GoogleService-Info.plist */,
+				750ADFA927515570005AB9E3 /* Oswald-Light.ttf */,
+				750ADFA727514A2F005AB9E3 /* Ubuntu-R.ttf */,
+				7544950F27501BB500AF7AB6 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7532EE3A2751DDC1009ABCA2 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				750ADFB1275175F7005AB9E3 /* StorageManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		7532EE3B2751DEDF009ABCA2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				750ADF9B2750E5B6005AB9E3 /* HexColorExtension.swift */,
+				750ADFA32751479D005AB9E3 /* Layout.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		754494F827501B9200AF7AB6 = {
@@ -100,17 +151,13 @@
 		7544950327501B9300AF7AB6 /* xOneTest */ = {
 			isa = PBXGroup;
 			children = (
-				7544950427501B9300AF7AB6 /* AppDelegate.swift */,
-				7544950627501B9300AF7AB6 /* SceneDelegate.swift */,
-				750ADF9B2750E5B6005AB9E3 /* HexColorExtension.swift */,
+				7544951227501BB500AF7AB6 /* Info.plist */,
+				7532EE382751DC3C009ABCA2 /* Application */,
+				7532EE3B2751DEDF009ABCA2 /* Extensions */,
+				7532EE3A2751DDC1009ABCA2 /* Firebase */,
 				750ADFA2275145CF005AB9E3 /* Controller */,
 				750ADFA12750E9F2005AB9E3 /* View */,
-				7544950A27501B9300AF7AB6 /* Main.storyboard */,
-				7544950D27501BB500AF7AB6 /* Assets.xcassets */,
-				754495232750281700AF7AB6 /* GoogleService-Info.plist */,
-				750ADFA727514A2F005AB9E3 /* Ubuntu-R.ttf */,
-				7544950F27501BB500AF7AB6 /* LaunchScreen.storyboard */,
-				7544951227501BB500AF7AB6 /* Info.plist */,
+				7532EE392751DC86009ABCA2 /* Resources */,
 			);
 			path = xOneTest;
 			sourceTree = "<group>";
@@ -185,6 +232,7 @@
 				7544951127501BB500AF7AB6 /* LaunchScreen.storyboard in Resources */,
 				750ADFA827514A2F005AB9E3 /* Ubuntu-R.ttf in Resources */,
 				7544950E27501BB500AF7AB6 /* Assets.xcassets in Resources */,
+				750ADFAA27515571005AB9E3 /* Oswald-Light.ttf in Resources */,
 				754495242750281700AF7AB6 /* GoogleService-Info.plist in Resources */,
 				7544950C27501B9300AF7AB6 /* Main.storyboard in Resources */,
 			);
@@ -199,12 +247,16 @@
 			files = (
 				750ADF9A2750E187005AB9E3 /* ContainerView.swift in Sources */,
 				750ADF9C2750E5B6005AB9E3 /* HexColorExtension.swift in Sources */,
+				750ADFB2275175F7005AB9E3 /* StorageManager.swift in Sources */,
 				7544950927501B9300AF7AB6 /* ViewController.swift in Sources */,
 				750ADFA02750E9E6005AB9E3 /* PhotoCollectionView.swift in Sources */,
 				750ADFA6275148DD005AB9E3 /* Constraints.swift in Sources */,
+				750ADFAC27515A0F005AB9E3 /* PickerController.swift in Sources */,
 				7544950527501B9300AF7AB6 /* AppDelegate.swift in Sources */,
 				750ADFA42751479D005AB9E3 /* Layout.swift in Sources */,
+				7532EE372751D8B3009ABCA2 /* CollectionDelegate:DataSource.swift in Sources */,
 				7544950727501B9300AF7AB6 /* SceneDelegate.swift in Sources */,
+				750ADFAE27516348005AB9E3 /* PresentPhotoViewController.swift in Sources */,
 				750ADF9E2750E9CA005AB9E3 /* PhotoCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

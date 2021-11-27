@@ -15,6 +15,7 @@ extension ViewController {
         self.textField.translatesAutoresizingMaskIntoConstraints      = false
         self.addImageButton.translatesAutoresizingMaskIntoConstraints = false
         self.imageViewOnTop.translatesAutoresizingMaskIntoConstraints = false
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints     = false
         NSLayoutConstraint.activate([
             // container view constraints
             containerView.heightAnchor.constraint(equalToConstant: self.view.bounds.height / 2.5), // Размер навскидку
@@ -39,8 +40,11 @@ extension ViewController {
             // image on top constraints
             imageViewOnTop.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 40 ),
             imageViewOnTop.heightAnchor.constraint(equalToConstant: 120),
-            imageViewOnTop.widthAnchor.constraint(equalToConstant: self.view.bounds.width / 2),
+            imageViewOnTop.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.7),
             imageViewOnTop.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            // title label constraints
+            titleLabel.centerXAnchor.constraint(equalTo: imageViewOnTop.centerXAnchor) ,
+            titleLabel.centerYAnchor.constraint(equalTo: imageViewOnTop.centerYAnchor),
         ])
         
     }

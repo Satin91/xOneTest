@@ -15,10 +15,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var imageViewOnTop: UIImageView!
     let containerView = ContainerView()
     var collectionView: PhotoCollectionView!
-    
-    
-    let database = Firestore.firestore()
-    let dataStorage = Storage.storage()
+    var storageManager = StorageManager()
+    var imageArray: [UIImage] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor().colorFromHexString("212020")
+        label.font = UIFont(name: "Oswald-Light",size: 40)
+        label.text = "Локации"
+        label.frame = .zero
+        return label
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackground()
@@ -28,8 +38,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setupTextfield()
         setupButton()
         setupConstraints()
-   
-        
     }
     func setupTextfield() {
         textField = UITextField(frame: self.view.bounds)
@@ -37,21 +45,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.delegate    = self
         textField.textColor   = UIColor().colorFromHexString("869495")
         textField.font        = UIFont(name: "Ubuntu",size: 26)
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.view.addSubview(textField)
     }
-    
-    func writeText(text: String) {
-        let docRef = database.document("satin/ff12")
-        docRef.setData(["text2":text ])
-    }
-    
     func setupButton() {
         self.addImageButton = UIButton(frame: .zero)
         self.containerView.addSubview(addImageButton)
         let image = UIImage(systemName: "plus.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .regular, scale: UIImage.SymbolScale(rawValue: 1)!))
-        
         self.addImageButton.setImage(image, for: .normal)
         self.addImageButton.tintColor = .black
+        self.addImageButton.addTarget(self, action: #selector(addImageButtonTapped), for: .touchUpInside)
         
     }
     func setupCollectionView() {
@@ -66,41 +69,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func setupBackground() {
         self.view.backgroundColor = UIColor().colorFromHexString("FAFAFA")
     }
-   
     func setupImageView() {
         self.imageViewOnTop = UIImageView(frame: .zero)
         self.imageViewOnTop.image = UIImage(named: "imageViewOnTop")
         self.imageViewOnTop.contentMode = .scaleAspectFit
         self.view.addSubview(imageViewOnTop)
+        self.imageViewOnTop.addSubview(self.titleLabel)
+    }
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        // Здесь текст должен быть записан в память устройства
+        
+        guard let text = textField.text else { return }
+        storageManager.writeText(text: text)
+    }
+    @objc func addImageButtonTapped() {
+        showPickerController()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text , !text.isEmpty {
-            writeText(text: text)
+            storageManager.writeText(text: text)
         }
-        
+        textField.resignFirstResponder()
         return true
     }
-    
-//    let docRef = database.document("satin/ff12")
-//    docRef.getDocument { snapshot, error in
-//        guard let data = snapshot?.data(), error == nil else { return }
-//        print(data)
-//    }
-    
+    func presentPhoto(_ photo: UIImage) {
+        let presentedController = PresentPhotoViewController()
+        presentedController.photo.image = photo
+        present(presentedController, animated: true, completion: nil)
+    }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
-        
-        
-        return cell
-    }
-    
-    
-    
-}
+
